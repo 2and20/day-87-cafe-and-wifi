@@ -15,7 +15,10 @@ Bootstrap(app)
 ### CONNECT TO DATABASE
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cafes.db'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://gttojvlgvfwdea:7ce832fc8709f3e6f7ab290fb89d8eda457f979fba08a185df168dc128d586eb@ec2-3-234-131-8.compute-1.amazonaws.com:5432/d44n437v47hjgf'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///cafes.db')
+uri = os.environ.get('DATABASE_URL', 'sqlite:///cafes.db')
+if uri and uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
