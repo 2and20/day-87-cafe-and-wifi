@@ -1,0 +1,47 @@
+{% include "header.html" %}
+
+<body class="body-bg">
+
+<nav class="navbar">testing NavBar</nav>
+    <h1>The List!</h1>
+    <h3></h3>
+    <p><a href="/random">Get a random</a></p>
+    <a role="button" href="/add-cafe">Add a cafe to our list!</a>
+    <table>
+        <tr>
+        {% for col_header in my_dict %}
+            <th>
+        {% print(col_header) %}
+                </th>
+        {% endfor %}
+
+        </tr>
+
+        {% for cafe in all_cafes %}
+        <tr>
+            {% for col_header in my_dict %}
+            <td>
+            {% if col_header == "map_url" %}
+               <a href={{cafe[col_header]}}>Map</a>
+                {% elif col_header == "img_url" %}
+                <a href={{cafe[col_header]}}><img src={{cafe[col_header]}} width="32" height="32"></a>
+                {% else %}
+            {% print(cafe[col_header]) %}
+                {% endif %}
+            </td>
+            {% endfor %}
+            <td><a href={{url_for('delete', cafe_id=cafe.id) }}>Delete</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+
+    <tr></tr>
+        {% for cafe in all_cafes %}
+        {% print(cafe) %}
+        {% endfor %}
+</body>
+
+
+{% include "footer.html" %}

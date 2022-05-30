@@ -1,0 +1,39 @@
+{% include "header.html" %}
+
+<body>
+<form action="/add-cafe" method="POST">
+    <label>Cafe Name</label>
+    <input type="text" name="name"><br>
+    <label>Map url</label>
+    <input type="url" name="map"><br>
+    <label>Image Link</label>
+    <input type="url" name="image"><br>
+
+    <label>Location</label>
+    <input type="text" name="location"><br>
+
+    Has Plug Sockets?
+    <input type="radio" id="yes" name="plug" value="Yes">
+    <label for="yes">Yes</label>
+    <input type="radio" id="no" name="plug" value="No">
+    <label for="no">No</label><br>
+
+    <label>Has Toilets?</label>
+    <input type="checkbox" value=True name="toilet"><br>
+    <label>Has WiFi?</label>
+    <input type="checkbox" value=True name="wifi"><br>
+    <label>Can Take Calls?</label>
+    <input type="checkbox" name="calls"><br>
+
+    How Many Seats?
+    <input type="number" name="seats" id="seats">
+    <label for="seats">How Many Seats?</label><br>
+
+    <label>Coffee Price? (low to high)</label>
+    <input type="range" id="price" name="price" min="10" max="50"><br>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+
+{% include "footer.html" %}
